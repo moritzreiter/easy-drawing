@@ -32,7 +32,7 @@ draw f = do
 
 call :: (Point -> Color) -> Requisition -> Render()
 call f dimensions = do
-   (Graphic.Canvas.drawPoint f) (5,0)
+   mapM_ (Graphic.Canvas.drawPoint f) pixels
     where
       x = getX dimensions
       y = getY dimensions
@@ -44,6 +44,6 @@ call f dimensions = do
 drawPoint :: (Point -> Color) -> Point -> Render()
 drawPoint f p = do
   setSourceColor $ f p
-  rectangle 1 1 1 1
+  rectangle (fromIntegral $ fst p) (fromIntegral $ snd p) 1 1
   fill
   return ()

@@ -12,6 +12,6 @@ drawTest = TCanvas.draw drawBlack
 drawBlack :: (Point -> Color)
 drawBlack (a, b)  
   | a == b = Color 0 0 0                          
-  | otherwise = Color 255 255 255
+  | otherwise = Color 65535 65535 65535
 
 
