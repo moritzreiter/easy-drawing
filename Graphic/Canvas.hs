@@ -25,9 +25,16 @@ import Graphics.UI.Gtk as Gtk
 import Graphics.Rendering.Cairo as Cairo
 
 -- | Needs a higher order function, wich gets a point. The point
--- represents a point in a cartesian coordinate system
-draw ::
-  (Point -> Color) -> IO()
+-- represents a point in a cartesian coordinate system. A very easy
+-- example to draw a diagonal:
+--
+-- @
+-- draw (\(x, y) -> if x == y then Color 0 0 0
+--                  else
+--                    Color 65000 65000 65000
+--      )
+-- @
+draw :: (Point -> Color) -> IO()
 draw f = do
 
   initGUI
