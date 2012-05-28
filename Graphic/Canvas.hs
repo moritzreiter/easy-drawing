@@ -18,13 +18,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 -}
 
+-- | Canvas provides a very easy way to draw something.
 module Graphic.Canvas(draw, Gtk.Point(..), Gtk.Color(..)) where
 
 import Graphics.UI.Gtk as Gtk
 import Graphics.Rendering.Cairo as Cairo
 
-
-draw :: (Point -> Color) -> IO()
+-- | Needs a higher order function, wich gets a point. The point
+-- represents a point in a cartesian coordinate system
+draw ::
+  (Point -> Color) -> IO()
 draw f = do
 
   initGUI
