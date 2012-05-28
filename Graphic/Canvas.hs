@@ -1,7 +1,28 @@
-module Graphic.Canvas(draw) where
+{-
 
-import Graphics.UI.Gtk
-import Graphics.Rendering.Cairo
+Easy Drawing - for easy drawing with haskell for absolute beginners
+Copyright (C) 2012 Benjamin Weißenfels <b.pixeldrama@gmail.com>
+
+This program is free software: you can redistribute it and/or
+modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-}
+
+module Graphic.Canvas(draw, Gtk.Point(..), Gtk.Color(..)) where
+
+import Graphics.UI.Gtk as Gtk
+import Graphics.Rendering.Cairo as Cairo
+
 
 draw :: (Point -> Color) -> IO()
 draw f = do
@@ -11,11 +32,11 @@ draw f = do
   -- generate new Window
   window <- windowNew
   set window [windowTitle := "Easy Drawing",
-              windowDefaultWidth := 450,
-              windowDefaultHeight := 450]
+              windowDefaultWidth := 400,
+              windowDefaultHeight := 400]
 
   canvas <- drawingAreaNew
-  canvas `onSizeRequest` return (Requisition 450 450)
+  canvas `onSizeRequest` return (Requisition 400 400)
   containerAdd window canvas
 
   onExpose canvas (\event -> do
