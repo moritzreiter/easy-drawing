@@ -20,5 +20,5 @@ Download from github:
   
 ## Use Easy Drawing direct
 
-Put your source files in this directory and import the module
-Graphic.Canvas.
+Put your source files into the directory `easy-drawing` or a
+subdirectory and import the module Graphic.Canvas.
